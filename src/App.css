@@ -1,3 +1,74 @@
+body {
+  background-color: grey;
+  color: white;
+}
 .App {
   text-align: center;
+  
+}
+
+
+.projectArea a, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+.project p, .project h3 {
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+   user-select: none;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+
+.description {
+  color: rgb(49, 49, 49);
+  margin: -1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.project {
+  border: solid white;
+  color: rgb(206, 206, 206);
+  background-color: rgb(49, 49, 49);
+  margin: 2rem;
+  padding: 1rem;
+  transition: 500ms;
+  border-radius: 0 5rem;
+  box-shadow: 2px 2px 2px 1px lightgrey;
+  
+}
+.project:hover{
+  color: rgb(49, 49, 49);
+  border:dotted white;
+  filter: invert(1);
+  box-shadow: none;
+}
+
+.project:hover .description{
+  filter: invert(1);
+  transition-duration: 500ms;
+}
+
+
+
+
+/*   */
+/*  Properties Large Phones / Tablets */
+@media (min-width: 43rem) {
+  
+}
+
+/*  Laptops and small monitors */
+@media (min-width: 62rem) {
+  
+}
+
+/* Large Screens */
+@media (min-width: 82rem) {
+  
 }
