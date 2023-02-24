@@ -6,17 +6,17 @@ export async function CreateAction({ request }) {
 
   // construct new project
   const newProject = {
-    subject: formData.get("title"),
+    title: formData.get("title"),
     owner: formData.get("owner"),
     deadline: formData.get("deadline"),
     description: formData.get("description"),
     tags: JSON.stringify(formData.get("tags")),
     content: JSON.stringify(formData.get("content"))
   };
-
+  console.log(newProject)
   // request to create route in backend
   await fetch("https://project-management-backend-django.onrender.com/projects/", {
-    method: "post",
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
@@ -33,12 +33,12 @@ export async function UpdateAction({ request, params }) {
   
     // construct new project
     const newProject = {
-        subject: formData.get("title"),
+        title: formData.get("title"),
         owner: formData.get("owner"),
         deadline: formData.get("deadline"),
         description: formData.get("description"),
         tags: JSON.stringify(formData.get("tags")),
-        content: JSON.stringify(formData.get("content"))
+        content: JSON.stringify(formData.get("content")) 
     };
   
     // request to update route in backend

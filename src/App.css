@@ -73,13 +73,20 @@ body {
 }
 
 label{
+  display: block;
+  text-align: end;
+  margin-right: 15%;
+  font-size: 1.25rem;
+  
+}
+.tbBorder{
   border-top: solid 1px black;
   border-bottom: solid 1px black;
 }
 
 input, textarea {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.5rem;
   width: 70%;
   font-size: 1rem;
   background-color: grey;
@@ -89,7 +96,7 @@ input, textarea {
   cursor: pointer;
 }
 
-input::placeholder{
+input::placeholder, textarea::placeholder{
   color: rgb(192, 189, 189);
 }
 
@@ -119,6 +126,33 @@ input[type="submit"]{
   border: solid;
 
 }
+
+.postFormField h4 {
+  text-align: end;
+  margin-right: 15%;
+  margin-top: 0;
+  color: #ff6060;
+  font-weight: 500;
+}
+.required{
+  color: #ff6060;
+}
+.gap {
+  color: grey;
+}
+
+.disabled:hover{
+  background-color:#ff6060;
+;
+}
+
+.ready:hover{
+  background-color: rgb(107, 248, 107);
+  color: black;
+  border-color: white;
+} 
+
+
 
 /*   */
 /*  Properties Large Phones / Tablets */
