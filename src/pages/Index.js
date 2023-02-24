@@ -5,9 +5,11 @@ function Index(props) {
     return <div className="projectArea">
         <h1>Project Management App</h1>
         <h2>Select Project:</h2>
-        <Link to="/newProject"> 
-        <button>New Project</button>
-        </Link>
+        <section>
+            <Link to="/newproject"> 
+                <button>New Project</button>
+            </Link> 
+        </section>
         {projectList.map(project => { return <ProjectCard data={project} key={project.id} /> })}
     </div>
 }
