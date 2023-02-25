@@ -10,7 +10,9 @@ function Index(props) {
                 <button>New Project</button>
             </Link> 
         </section>
-        {projectList.map(project => { return <ProjectCard data={project} key={project.id} /> })}
+        <div className="projectMap">
+            {projectList.map(project => { return <ProjectCard data={project} key={project.id} /> })}
+        </div>
     </div>
 }
 
