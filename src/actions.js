@@ -37,8 +37,8 @@ export async function UpdateAction({ request, params }) {
         owner: formData.get("owner"),
         deadline: formData.get("deadline"),
         description: formData.get("description"),
-        tags: JSON.stringify(formData.get("tags")),
-        content: JSON.stringify(formData.get("content")) 
+        tags: formData.get("tags"),
+        content: (formData.get("content")) 
     };
   
     // request to update route in backend

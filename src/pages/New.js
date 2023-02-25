@@ -1,5 +1,6 @@
-import { Form } from "react-router-dom";
+import { Form, Link, redirect } from "react-router-dom";
 import { useState } from "react";
+
 function New(props) {
     const [formInfo, setFormInfo] = useState ({
         title: "",
@@ -7,14 +8,13 @@ function New(props) {
         deadline: "",
         description: ""
     })
-
     const [tagFields, setTagFields] = useState([""])
-
     const addTag = () => {
         let data = [...tagFields, ""];
         setTagFields(data);
         
     }
+
 
     function updateTags(event, index) {
         let tagArray = [...tagFields]
@@ -48,6 +48,7 @@ function New(props) {
     <br />
 
     {(formInfo.title && formInfo.owner && formInfo.deadline && formInfo.description) ? <input className="ready" type="submit" value="Create"  /> : <input className="disabled" type="submit" value="Create" disabled />}
+    <a href="/"><p>Cancel</p></a>
     <h4>* required</h4>
 </Form>
 }

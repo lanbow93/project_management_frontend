@@ -95,6 +95,21 @@ input, textarea {
   border-bottom: solid 1px white;
   cursor: pointer;
 }
+a p{
+  border: none !important;
+  padding: 0 !important;
+
+}
+
+.postFormField a {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  width: 70%;
+  border: solid 3px white;
+  margin-bottom: 1rem;
+}
+
 
 input::placeholder, textarea::placeholder{
   color: rgb(192, 189, 189);
@@ -152,7 +167,21 @@ input[type="submit"]{
   border-color: white;
 } 
 
+.projectPage p{
+  text-align: start;
+  padding-left: 10%;
+  margin-bottom: 0;
+}
 
+.target{
+  font-weight: bold;
+  font-size: larger;
+  margin-top: 0;
+}
+
+.lower{
+  font-size: small;
+}
 
 /*   */
 /*  Properties Large Phones / Tablets */
