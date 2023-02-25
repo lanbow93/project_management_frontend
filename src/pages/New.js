@@ -37,10 +37,10 @@ function New(props) {
     <label><span className="tbBorder">Tag(s)</span>  <span className="gap">  *</span></label>
 
     {tagFields.map((tag, index) => { 
-        return <>
-        <br />
-        <input className="tag" type='text' name='tag' placeholder='New Tag' value={tag} onChange={event => updateTags(event, index)}/>
-        </>
+        return <div className="tagField" key={"key"+index}>
+            <br />
+            <input className="tag" type='text' name='tag' placeholder='New Tag' value={tag} onChange={event => updateTags(event, index)}/>
+        </ div>
     })}
     <input type="hidden" value={tagFields} name="tags" />
     <br />
