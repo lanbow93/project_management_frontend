@@ -97,7 +97,7 @@ input, textarea {
 }
 
 
-.postFormField a {
+.postFormField a, .projectPage a {
   display: inline-block;
   text-decoration: none;
   color: inherit;
@@ -121,7 +121,7 @@ input::placeholder, textarea::placeholder{
   width: 60%;
 }
 
-form p{
+form p, .newTask {
   display: inline-block;
   border: 1px solid;
   padding: .2rem .7rem;
@@ -129,7 +129,7 @@ form p{
   transition: 500ms;
   
 }
-form p:hover{
+form p:hover, .newTask:hover{
   background: white;
   color: black;
   font-weight: bold;
@@ -193,11 +193,69 @@ input[type="submit"]{
   gap: 1rem;
 }
 
+.projectPage form {
+  display: flex;
+  justify-content: end;
+}
+
+.projectPage .buttons{
+  margin-top: 1.5rem;
+  gap: 2rem;
+}
+
+.newTask{
+  padding: .5rem 1rem !important;
+  
+  margin-bottom: 1rem;
+}
+ul {
+  text-align: start;
+  margin-left: 10%;
+}
+
+.taskArea {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+}
+
+select{
+  width: 100%;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: gray;
+  color: white;
+  border: none;
+  border-bottom: solid 1px white;
+}
+
+li {
+  font-size: 1.25rem;
+  list-style-type: "- ";
+}
+.taskArea ul{
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  justify-content: space-between;
+}
+
+.inputArea li {
+  font-size: 1.5rem;
+  list-style-type: none;
+  margin-left: 0;
+  width: 100%;
+}
+
+
 /*   */
 /*  Properties Large Phones / Tablets */
 @media (min-width: 43rem) {
   section {
     text-align: end;
+  }
+  .taskArea{
+    padding: 0 10rem;
   }
 }
 
