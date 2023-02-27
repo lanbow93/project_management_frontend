@@ -1,4 +1,4 @@
-import { Form, useLoaderData, Link } from "react-router-dom"
+import { Form, useLoaderData } from "react-router-dom"
 import { useState, Fragment } from "react";
 function Show(props){
     const project = useLoaderData()
@@ -16,13 +16,13 @@ function Show(props){
     console.log(toDoList)
     function handleChange(event, index){
         if (event.target.name === "delete") {
-            const updatedTasks = toDoList;
+            const updatedTasks = [...toDoList];
             console.log(updatedTasks)
             updatedTasks.splice(index, 1)
             setToDoList(updatedTasks)
             
         } else {
-            const updatedTasks = toDoList;
+            const updatedTasks = [...toDoList];
             updatedTasks[index] = [event.target.name, event.target.value]
             setToDoList(updatedTasks)
         }
@@ -54,15 +54,21 @@ function Show(props){
                         <option value="Done">Done</option>
                         </select>
                         
+                        <button className="icon"><img  src="https://www.freeiconspng.com/thumbs/pencil-png/black-pencil-png-black-pencil-vector-8.png" alt="Girl in a jacket" /></button>
                         <button name="delete" onClick={event => handleChange(event, index)} className="icon">X</button>
                         
-                        <button className="icon"><img  src="https://www.freeiconspng.com/thumbs/pencil-png/black-pencil-png-black-pencil-vector-8.png" alt="Girl in a jacket" /></button>
+                        
                         
                     </Fragment>}) : ""}
             </ul>
         </section>
-        <p className="newTask">New Task</p>
-        <Link to={`/project/${project.id}`}><p className="newTask">Confirm</p></Link>
+        
+
+        <Form className="centeredForm">
+            <p className="newTask">New Task</p>
+            <p type="Submit" className="newTask">Confirm</p>
+        </Form>
+        
 
 
     </div>
