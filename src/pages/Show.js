@@ -1,4 +1,4 @@
-import { Form, useLoaderData } from "react-router-dom"
+import { Form, useLoaderData, Link } from "react-router-dom"
 import { useState, Fragment } from "react";
 function Show(props){
     const project = useLoaderData()
@@ -12,12 +12,23 @@ function Show(props){
 
     const contentObject = typeof project.content === "string" ? JSON.parse(JSON.parse(project.content)) : project.content;
     const contentArray = contentObject ? Object.entries(contentObject) : []
-
     const [toDoList, setToDoList] = useState(contentArray);
+    console.log(toDoList)
+    function handleChange(event, index){
+        if (event.target.name === "delete") {
+            const updatedTasks = toDoList;
+            console.log(updatedTasks)
+            updatedTasks.splice(index, 1)
+            setToDoList(updatedTasks)
+            
+        } else {
+            const updatedTasks = toDoList;
+            updatedTasks[index] = [event.target.name, event.target.value]
+            setToDoList(updatedTasks)
+        }
+    }
 
-
-    console.log(contentArray)
-    
+   
     return <div className="projectPage">
         <h1>{project.title}</h1>
         <p>Product Owner:</p>
@@ -35,14 +46,24 @@ function Show(props){
         <h2>Task List</h2>
         <section className="taskArea">
             <ul className="taskItems">
-                { (contentObject !== "null") ? contentArray.map((task, index) => <Fragment key={`arrayKey${index}`} ><li >{task[0]}</li> <select key={`arrayOption${index}`} defaultValue={task[1]}>
+                { (toDoList.length !== 0) ? toDoList.map((task, index) => { return <Fragment key={`arrayKey${task[0]}`} >
+                        <li >{task[0]}</li>
+                        <select onChange={event => handleChange(event, index)} name={task[0]} defaultValue={task[1]}>
                         <option value="To-Do">To-Do</option>
                         <option value="In-Progress">In-Progress</option>
                         <option value="Done">Done</option>
-                    </select></Fragment>) : ""}
+                        </select>
+                        
+                        <button name="delete" onClick={event => handleChange(event, index)} className="icon">X</button>
+                        
+                        <button className="icon"><img  src="https://www.freeiconspng.com/thumbs/pencil-png/black-pencil-png-black-pencil-vector-8.png" alt="Girl in a jacket" /></button>
+                        
+                    </Fragment>}) : ""}
             </ul>
         </section>
         <p className="newTask">New Task</p>
+        <Link to={`/project/${project.id}`}><p className="newTask">Confirm</p></Link>
+
 
     </div>
 }
