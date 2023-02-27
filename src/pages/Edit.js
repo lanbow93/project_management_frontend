@@ -54,7 +54,7 @@ function Edit(props){
 
     <section className="buttons">
         {(formInfo.title && formInfo.owner && formInfo.deadline && formInfo.description) ? <input className="ready" type="submit" value="Update"  /> : <input className="disabled" type="submit" value="Create" disabled />}
-        <a href={`/project/${data.id}`}>Cancel</a>
+        <a className="imitationButton" href={`/project/${data.id}`}>Cancel</a>
     </section>
     <h4>* required</h4>
 </Form>

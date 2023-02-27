@@ -49,7 +49,7 @@ function New(props) {
 
     <section className="buttons">
         {(formInfo.title && formInfo.owner && formInfo.deadline && formInfo.description) ? <input className="ready" type="submit" value="Create"  /> : <input className="disabled" type="submit" value="Create" disabled />}
-        <a href="/">Cancel</a>
+        <a className="imitationButton" href="/">Cancel</a>
     </section>
     <h4>* required</h4>
 </Form>

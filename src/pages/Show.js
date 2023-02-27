@@ -1,4 +1,5 @@
 import { Form, useLoaderData } from "react-router-dom"
+import { useState, Fragment } from "react";
 function Show(props){
     const project = useLoaderData()
     // console.log(project)
@@ -11,6 +12,11 @@ function Show(props){
 
     const contentObject = typeof project.content === "string" ? JSON.parse(JSON.parse(project.content)) : project.content;
     const contentArray = contentObject ? Object.entries(contentObject) : []
+
+    const [toDoList, setToDoList] = useState(contentArray);
+
+
+    console.log(contentArray)
     
     return <div className="projectPage">
         <h1>{project.title}</h1>
@@ -24,22 +30,16 @@ function Show(props){
             <Form action={`/delete/${project.id}`} method='post'>
                 <input type="submit" value="Delete Project"  /> 
             </Form>
-            <a href={`/editproject/${project.id}`}>Edit Project</a>
+            <a className="imitationButton" href={`/editproject/${project.id}`}>Update Details</a>
         </section>
         <h2>Task List</h2>
         <section className="taskArea">
-            <ul>
-                {contentArray.map((task, index) => <li key={`arrayKey${index}`}>{task[0]}</li>)}
-            </ul>
-            <ul className="inputArea">
-                {contentArray.map((task, index) => {
-                    console.log(task[1])
-                    return <li key={`arrayOption${index}`}><select defaultValue={task[1]}>
+            <ul className="taskItems">
+                { (contentObject !== "null") ? contentArray.map((task, index) => <Fragment key={`arrayKey${index}`} ><li >{task[0]}</li> <select key={`arrayOption${index}`} defaultValue={task[1]}>
                         <option value="To-Do">To-Do</option>
                         <option value="In-Progress">In-Progress</option>
                         <option value="Done">Done</option>
-                    </select></li>})
-                }
+                    </select></Fragment>) : ""}
             </ul>
         </section>
         <p className="newTask">New Task</p>

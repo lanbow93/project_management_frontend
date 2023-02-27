@@ -11,7 +11,7 @@ body {
 }
 
 
-.projectArea a, a:focus, a:active {
+ a, a:focus, a:active {
   text-decoration: none;
   color: inherit;
   
@@ -97,7 +97,7 @@ input, textarea {
 }
 
 
-.postFormField a, .projectPage a {
+.imitationButton {
   display: inline-block;
   text-decoration: none;
   color: inherit;
@@ -210,23 +210,17 @@ input[type="submit"]{
 }
 ul {
   text-align: start;
-  margin-left: 10%;
 }
 
-.taskArea {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
-}
 
 select{
   width: 100%;
   font-size: 1rem;
   font-weight: bold;
-  background-color: gray;
+  background-color: darkgray;
   color: white;
   border: none;
-  border-bottom: solid 1px white;
+  text-align: center;
 }
 
 li {
@@ -234,17 +228,23 @@ li {
   list-style-type: "- ";
 }
 .taskArea ul{
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
   padding-left: 0;
-  justify-content: space-between;
+  
 }
 
 .inputArea li {
   font-size: 1.5rem;
   list-style-type: none;
   margin-left: 0;
+  margin-top: 0;
   width: 100%;
+}
+
+.taskItems {
+  padding: 0 1rem !important;
 }
 
 
@@ -252,7 +252,7 @@ li {
 /*  Properties Large Phones / Tablets */
 @media (min-width: 43rem) {
   section {
-    text-align: end;
+    text-align: flex-end;
   }
   .taskArea{
     padding: 0 10rem;
