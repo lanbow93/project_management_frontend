@@ -94,6 +94,7 @@ input, textarea {
   align-items: center;
   padding: auto;
   line-height: 3.5rem;
+  transition: 300ms;
 }
 
 
@@ -115,7 +116,7 @@ form p, .newTask {
   transition: 500ms;
   
 }
-form p:hover, .newTask:hover{
+form p:hover, .newTask:hover, .imitationButton:hover{
   background: white;
   color: black;
   font-weight: bold;
@@ -191,8 +192,9 @@ input[type="submit"]{
 
 .newTask{
   padding: .5rem 1rem !important;
-  
+  width: 20%;
   margin-bottom: 1rem;
+  text-align: center !important;
 }
 ul {
   text-align: start;
@@ -249,8 +251,24 @@ li {
   justify-self: center;
 }
 .centeredForm {
-  justify-content: center !important;
+  justify-content: space-evenly !important;
 }
+
+.hidden {
+  display: none !important;
+}
+.inputHoudini {
+  grid-column: span 4;
+  display: grid;
+  grid-template-columns: 1fr 1fr .5fr .5fr;
+  gap: 1rem;
+}
+
+.inputHoudini input{
+  grid-column: span 3 ;
+  width: 100%;
+}
+
 /*   */
 /*  Properties Large Phones / Tablets */
 @media (min-width: 43rem) {

@@ -2,30 +2,45 @@ import { Form, useLoaderData } from "react-router-dom"
 import { useState, Fragment } from "react";
 function Show(props){
     const project = useLoaderData()
-    // console.log(project)
+    // Converting date into javascript dates and subtracting time difference, then breaking down into time areas
     const date1 = new Date(project.deadline);
     const date2 = new Date();
+
     let timeDifference = Math.abs(date1 - date2) / 36e5;
     const weeks = (date1 > date2) ? Math.floor(timeDifference / 168) : Math.round(timeDifference / -168);
     const days = Math.floor((timeDifference % 168) / 24 )
     const hours = Math.round((timeDifference % 168) % 24 )
 
+    // Pulls in content list and parses the json if it is the proper type
     const contentObject = typeof project.content === "string" ? JSON.parse(JSON.parse(project.content)) : project.content;
     const contentArray = contentObject ? Object.entries(contentObject) : []
+    
     const [toDoList, setToDoList] = useState(contentArray);
-    console.log(toDoList)
+    const [inputStatus, setInputStatus] = useState(["hidden"])
+    const [controlledInput, setControlledInput] = useState("")
+    
     function handleChange(event, index){
         if (event.target.name === "delete") {
             const updatedTasks = [...toDoList];
-            console.log(updatedTasks)
             updatedTasks.splice(index, 1)
             setToDoList(updatedTasks)
-            
-        } else {
+        } else if (event.target.name = "newTask" ) {
+            setControlledInput(event.target.value)
+        }
+         else {
             const updatedTasks = [...toDoList];
             updatedTasks[index] = [event.target.name, event.target.value]
             setToDoList(updatedTasks)
         }
+    }
+
+    function submitTask(){
+        const updatedTasks = [...toDoList]
+        updatedTasks.push([controlledInput, "To-Do"])
+        console.log(updatedTasks)
+        setToDoList(updatedTasks)
+        setInputStatus("hidden")
+        setControlledInput("")
     }
 
    
@@ -55,19 +70,23 @@ function Show(props){
                         </select>
                         
                         <button className="icon"><img  src="https://www.freeiconspng.com/thumbs/pencil-png/black-pencil-png-black-pencil-vector-8.png" alt="Girl in a jacket" /></button>
-                        <button name="delete" onClick={event => handleChange(event, index)} className="icon">X</button>
-                        
-                        
-                        
+                        <button name="delete" onClick={event => handleChange(event, index)} className="icon delete">X</button>
                     </Fragment>}) : ""}
+                <div className={inputStatus}>
+                    <input type="text" name="newTask" value={controlledInput}  onChange={event => handleChange(event)} placeholder="Type task here" />
+                    <button className="icon" onClick={submitTask}> &#10003; </button> 
+                </div>
             </ul>
         </section>
-        
 
-        <Form className="centeredForm">
-            <p className="newTask">New Task</p>
-            <p type="Submit" className="newTask">Confirm</p>
+
+        <Form className="centeredForm " >
+            <input type="hidden" name="" />
+            <p className="newTask" onClick={event => setInputStatus("inputHoudini")}>New Task</p>
+            <p type="Submit" className="newTask">Confirm Changes</p>
         </Form>
+
+
         
 
 
