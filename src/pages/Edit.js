@@ -10,7 +10,7 @@ function Edit(props){
         deadline: data.deadline,
         description: data.description
     })
-    const content = JSON.stringify(data.content)
+    const content = JSON.parse(data.content)
     const [tagFields, setTagFields] = useState(JSON.parse(data.tags).split(","))
     console.log(tagFields)
     const addTag = () => {

@@ -14,15 +14,28 @@ function Show(props){
     // Class to add or remove text box
     const [inputStatus, setInputStatus] = useState(["hidden"])
     const [controlledInput, setControlledInput] = useState("")
-    const [toDoList, setToDoList] = useState([]);
+
+    const importedList = JSON.parse(project.content) === null ? [] : JSON.parse(project.content).split(",")
+
+    const [toDoList, setToDoList] = useState(importedList);
+
 
     function handleChange(event, index){
+        console.log(event.targetvalue)
         if (event.target.name === "delete") {
             const updatedTasks = [...toDoList];
-            updatedTasks.splice(index, 1)
+            updatedTasks.splice(index, 2)
             setToDoList(updatedTasks)
-        } else if (event.target.name = "newTask" ) {
+        } else if (event.target.name === "newTask" ) {
             setControlledInput(event.target.value)
+        } else {
+            console.log("Running")
+            let tempArray = [...toDoList]
+            tempArray[index + 1] = event.target.value
+
+            
+            setToDoList(tempArray)
+            
         }
     }
 
@@ -54,12 +67,12 @@ function Show(props){
                         if(index%2 === 0){
                         return <Fragment key={`arrayKey${task}`} >
                         <li >{task}</li>
-                        <select onChange={event => handleChange(event, index)} name={task[0]} defaultValue={toDoList[index +1]}>
+                        <select onChange={event => handleChange(event, index)} name="taskChanger" defaultValue={toDoList[index +1]}>
                         <option value="To-Do">To-Do</option>
                         <option value="In-Progress">In-Progress</option>
                         <option value="Done">Done</option>
                         </select>
-                        <button className="icon"><img  src="https://www.freeiconspng.com/thumbs/pencil-png/black-pencil-png-black-pencil-vector-8.png" alt="Girl in a jacket" /></button>
+                        <button className="icon"><img  src="https://www.freeiconspng.com/thumbs/pencil-png/black-pencil-png-black-pencil-vector-8.png" alt="Pencil icon for editing task" /></button>
                         <button name="delete" onClick={event => handleChange(event, index)} className="icon delete">X</button>
                     </Fragment>}
                 }) : ""}
@@ -78,7 +91,7 @@ function Show(props){
             <input type="hidden" value={project.description} name="description" />
             <input type="hidden" value={JSON.parse(project.tags)} name="tags" />
             
-            {typeof toDoList ===  "string" ? <input type="hidden" value={JSON.parse(toDoList)}  name="content" /> : <input type="hidden" value={toDoList}  name="content" />  }
+            <input type="hidden" value={toDoList}  name="content" />
             <p className="newTask" onClick={() => setInputStatus("inputHoudini")} >New Task</p>
             <button className="newTask ">Confirm Changes</button>
         </Form>
