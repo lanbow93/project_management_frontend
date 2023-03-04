@@ -269,6 +269,14 @@ li {
   width: 100%;
 }
 
+.centeredForm button {
+  color: inherit;
+  background-color: inherit;
+  font-size: inherit;
+  border: solid 1px white;
+  margin-bottom: 0;
+}
+
 /*   */
 /*  Properties Large Phones / Tablets */
 @media (min-width: 43rem) {

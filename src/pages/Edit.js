@@ -3,7 +3,7 @@ import { useState } from "react"
 
 function Edit(props){
     const data = useLoaderData()
-    // console.log(data)
+     console.log(data)
     const [formInfo, setFormInfo] = useState ({
         title: data.title,
         owner: data.owner,
@@ -11,8 +11,8 @@ function Edit(props){
         description: data.description
     })
     const content = JSON.stringify(data.content)
-    console.log(typeof content)
     const [tagFields, setTagFields] = useState(JSON.parse(data.tags).split(","))
+    console.log(tagFields)
     const addTag = () => {
         let data = [...tagFields, ""];
         setTagFields(data);

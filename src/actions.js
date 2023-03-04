@@ -14,7 +14,7 @@ export async function CreateAction({ request }) {
     content: JSON.stringify(formData.get("content"))
   };
   // request to create route in backend
-  await fetch("https://project-management-backend-django.onrender.com/projects/", {
+  await fetch("https://project-management-backend-django.onrender.com/project/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -39,9 +39,9 @@ export async function UpdateAction({ request, params }) {
       tags: JSON.stringify(formData.get("tags")),
       content: JSON.stringify(formData.get("content"))
     };
-  
+
     // request to update route in backend
-    await fetch("https://project-management-backend-django.onrender.com/projects/" + params.id + "/", {
+    await fetch("https://project-management-backend-django.onrender.com/project/" + params.id + "/", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -58,7 +58,7 @@ export async function UpdateAction({ request, params }) {
     const id = params.id
 
     // send request to delete
-    await fetch("https://project-management-backend-django.onrender.com/projects/" + id + "/", {
+    await fetch("https://project-management-backend-django.onrender.com/project/" + id + "/", {
         method: "delete"
     })
 
