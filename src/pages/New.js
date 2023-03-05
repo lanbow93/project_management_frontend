@@ -1,4 +1,4 @@
-import { Form, Link, redirect } from "react-router-dom";
+import { Form } from "react-router-dom";
 import { useState } from "react";
 
 function New(props) {

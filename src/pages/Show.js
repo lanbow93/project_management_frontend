@@ -1,4 +1,4 @@
-import { Form, json, useLoaderData } from "react-router-dom"
+import { Form, useLoaderData } from "react-router-dom"
 import { useState, Fragment } from "react";
 function Show(props){
     const project = useLoaderData()
@@ -75,6 +75,9 @@ function Show(props){
                         <button className="icon"><img  src="https://www.freeiconspng.com/thumbs/pencil-png/black-pencil-png-black-pencil-vector-8.png" alt="Pencil icon for editing task" /></button>
                         <button name="delete" onClick={event => handleChange(event, index)} className="icon delete">X</button>
                     </Fragment>}
+                    else {
+                        return ""
+                    }
                 }) : ""}
                 <div className={inputStatus}>
                 <input type="text" name="newTask" value={controlledInput}  onChange={event => handleChange(event)} placeholder="Type task here" />
